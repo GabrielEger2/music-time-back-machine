@@ -12,13 +12,14 @@ import json
 from spotipy.oauth2 import SpotifyOAuth
 from datetime import datetime
 
-
+# Opening the json file with information for spotipy
 with open('AppInfo.json') as f:
     data = json.load(f)
     client_id = data['AppInfo']['ID']
     client_secret = data['AppInfo']['secret']
     website_url = data['AppInfo']['website']
 
+# Creating the class for the main window
 class Window(QMainWindow):
     def __init__(self):
         super(Window, self).__init__()
@@ -29,6 +30,7 @@ class Window(QMainWindow):
         self.ui.actionAdd_Spotify_Account.triggered.connect(self.show_how_add_spotify)
         self.ui.actionExit.triggered.connect(self.close_window)
 
+# Getting the calendar date from the widget
     def calendar_date(self):
         if len(client_id) == 0 or len(client_secret) == 0 or len(website_url) == 0:
             self.show_how_configure()
@@ -38,7 +40,7 @@ class Window(QMainWindow):
             songs_names = []
             date_selected = self.ui.calendar_wd.selectedDate()
             date = str(date_selected.toPython())
-            if int(date[:4]) > 1899:
+            if int(date[:4]) > 1899: # Making sure that the date is not in the 1800s
                 try:
                         request = requests.get(f"https://www.billboard.com/charts/hot-100/{date}/")
                         bs = BeautifulSoup(request.text, "html.parser")
@@ -48,7 +50,7 @@ class Window(QMainWindow):
                         for song in songs:
                             songs_names.append(song.getText())
                         songs_names.insert(0, first_song_name)
-                        lock = 1
+                        lock = 1 # Making sure everything worked out
                 except:
                     self.show_error_massage(f"Please select a valid date: 1900/01/01 - "
                                             f"{str(str(datetime.today().year) + '-' + str(datetime.today().month) + '-' + str(datetime.today().day)).replace('-', '/')}")
@@ -58,6 +60,8 @@ class Window(QMainWindow):
 
             if lock == 1:
                 window.close()
+
+                # Authenticating spotify with spotipy
                 sp = spotipy.Spotify(
                     auth_manager = SpotifyOAuth(
                         scope = "playlist-modify-private",
@@ -85,6 +89,7 @@ class Window(QMainWindow):
                 print("Process Finished, Playlist Created")
                 sp.playlist_add_items(playlist_id=playlist["id"], items=uris)
 
+# Displaying error massage
     def show_error_massage(self, massage):
         self.window = QMainWindow()
         self.error = Ui_ErrorMassage()
@@ -92,6 +97,7 @@ class Window(QMainWindow):
         self.window.show()
         self.error.lb_em.setText(f"<html><head/><body><p align=\"center\"><span style=\" color:#ffffff;\">{massage}</span></p></body></html>")
 
+# Showing the how to configure pop up
     def show_how_configure(self):
         self.configwindow = QMainWindow()
         self.configure = Ui_HowToConfigure()
@@ -99,6 +105,7 @@ class Window(QMainWindow):
         self.configwindow.show()
         self.configure.add_info_bt.clicked.connect(self.add_info)
 
+# Adding the information from the how to configure pop up to a json file
     def add_info(self):
         self.configwindow.close()
         client_id = str(self.configure.ID_et.text())
@@ -124,6 +131,7 @@ class Window(QMainWindow):
                 with open('AppInfo.json', 'w', encoding='utf-8') as f:
                     json.dump(new_info, f, indent=4)
 
+# Showing the how to add pop up
     def show_how_add_spotify(self):
         self.window = QMainWindow()
         self.configure = Ui_HowAddSpotify()
@@ -133,6 +141,7 @@ class Window(QMainWindow):
     def close_window(self):
         self.close()
 
+# Creating the main window and showing it
 app = QApplication(sys.argv)
 window = Window()
 window.show()
