@@ -12,6 +12,10 @@ import json
 from spotipy.oauth2 import SpotifyOAuth
 from datetime import datetime
 
+# Load Requirements
+with open('requirements.txt') as f:
+    requirements = f.readlines()
+
 # Opening the json file with information for spotipy
 with open('AppInfo.json') as f:
     data = json.load(f)
