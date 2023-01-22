@@ -15,6 +15,7 @@ In order to locally use this website, you must install the libraries requirement
     
 <h3>Environment Variables</h3>
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 This project requires a Spotify account and a custom Spotify's application that can be done following a guide inside the program; this information can be added inside the GUI or directly into the JSON file by changing the following libraries.
 
 `client_id` = "ID"
