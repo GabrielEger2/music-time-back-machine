@@ -7,7 +7,7 @@ This is a code repository for an app that takes the top 100 musics of a certain 
 <h3>Requirements</h3>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-In order to locally use this website, you must install the libraries requirements using the following command: 
+In order to locally use this program, you must install the libraries requirements using the following command: 
 
 ```bash
  pip install -r requirements.txt
