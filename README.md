@@ -40,7 +40,7 @@ After all that, the program will start to web-scrape billboard to 100 songs on t
 <img src="https://user-images.githubusercontent.com/52424334/213900515-bc027fe5-03cc-4e0e-b47f-6258c12594cc.png" width="500">
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Once the project is done, if everything works out, you will have a playlist on your Spotify account
+Once the code is done, if everything works out, you will have a playlist on your Spotify account
 
 <img src="https://user-images.githubusercontent.com/52424334/213900553-32c0fdf4-f0ed-40b5-afad-97fdfb159f44.png" height="300" align="left">
 <img src="https://user-images.githubusercontent.com/52424334/213900559-779c0fba-0cef-44a6-b6f1-f51f529f23bb.png" height="300" align="left">
