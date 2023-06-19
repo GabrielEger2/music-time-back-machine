@@ -35,7 +35,7 @@ Once the code is initialized, a window will open showing a calendar widget
 Once a date is selected, a pop-up window will appear to request Spotify's application details; once provided with this information, the next time the user clicks a date, a Spotify authorization window will appear on the browser; after accepting the terms, the user must copy the link of the webpage and paste on the terminal in other to generate the token. This process only needs to be done once.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-After all that, the program will start to web-scrape billboard to 100 songs on that specific date:
+After all that, the program will start to web-scrape billboard top 100 songs on that specific date:
 
 <img src="https://user-images.githubusercontent.com/52424334/213900515-bc027fe5-03cc-4e0e-b47f-6258c12594cc.png" width="500">
 
